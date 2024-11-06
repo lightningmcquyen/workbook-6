@@ -1,6 +1,6 @@
 package com.pluralsight.asset;
 
-public class Jewelry extends FixedAsset{
+public class Jewelry extends FixedAsset {
     private double karat;
 
     public Jewelry(String name, double marketValue, double karat) {
@@ -10,7 +10,8 @@ public class Jewelry extends FixedAsset{
 
     @Override
     public double getValue() {
-        double marketValue = 0; //initialize marketValue
-        return marketValue;
+        double baseValue = getMarketValue();
+        double karatValueAdjustment = karat * 0.1; // Adjust value based on karat
+        return baseValue * (1 + karatValueAdjustment);
     }
 }
