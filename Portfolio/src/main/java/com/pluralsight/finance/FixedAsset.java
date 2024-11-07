@@ -6,6 +6,12 @@ public abstract class FixedAsset {
 
     // Constructor to initialize the name and marketValue
     public FixedAsset(String name, double marketValue) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("Asset name cannot be null or empty");
+        }
+        if (marketValue < 0) {
+            throw new IllegalArgumentException("Market value cannot be negative");
+        }
         this.name = name;
         this.marketValue = marketValue;
     }
@@ -22,4 +28,10 @@ public abstract class FixedAsset {
 
     // Abstract method to be implemented by subclasses
     public abstract double getValue();
+
+    // toString() method to provide a string representation of the asset
+    @Override
+    public String toString() {
+        return "Fixed Asset: " + name + ", valued at $" + marketValue;
+    }
 }
